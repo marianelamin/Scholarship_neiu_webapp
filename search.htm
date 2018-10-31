@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Scholarships - NEIU El Centro</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 <body class="mx-sm-2 mb-sm-2 mx-md-4 mx-lg-5" data-offset="20" data-spy="scroll" data-target="#minavega">
 
@@ -73,7 +71,7 @@
 
 							<!-- form starts -->
 							<div class="container-fluid">
-								<form action="" method="POST">
+								<form action="show.php" method="POST">
 									<div class="row">
 										<div class="col-md-12 col-lg align-self-start">
 											<label for="gpa_id" class="col">Grade Point Average: <br /><span>(GPA 4point scale)</span><br />
@@ -83,7 +81,8 @@
 										<div class="col-12 col-md-6 col-lg align-self-start">
 											<label for="subj_id" class="col">Major: <br/>
 												<select class="col-auto" name="major" size="8" multiple="" id="subj_id">
-													<option value="ACAD">Academic Development</option>
+                                                    <option value="ALLM">All Majors</option>
+                                                    <option value="ACAD">Academic Development</option>
 													<option value="ACTG">Accounting</option>
 													<option value="ABF">Acct,Business Law and Finance</option>
 													<option value="AFAM">African &amp; African Amer Studies</option>
@@ -209,7 +208,7 @@
 									</div>
 									<div class="row">
 										<div class="col-12 text-center">
-											<input class="col-5 search-bttn" type="submit" value="Start the Search" />	
+											<input class="col-5 search-bttn" type="submit" value="SEARCH" />	
 
 													<!-- MAKE SURE I DO VALIDATION -->
 
@@ -222,34 +221,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="divider-sec"></div>
-			<div class="container-fluid" id="results">
-				<div class="row justify-content-around">
-					<h2 class="col-12 text-center pb-3">Results</h2>
-					<div class="col-6 sch-object" title="Click for more information">
-						<div class="col-auto">New York Senate Graduate Fellowships</div>
-						<div class="col-auto">April 29, 2019</div>
-						<div class="col-auto">$33,000</div>
-						<div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
-					</div>
-
-					<div class=" col-6 sch-object">
-						<div class="col-auto">Name-(text)</div>
-						<div class="col">DueDate-(date)</div>
-						<div class="col">Amount-(finance number)</div>
-						<div class="col"><a href="show-details.htm?sch-number">more-(link)</a></div>
-					</div>
-
-					<div class=" col-6 sch-object">
-						<div class="col-auto">Name-(text)</div>
-						<div class="col">DueDate-(date)</div>
-						<div class="col">Amount-(finance number)</div>
-						<div class="col"><a href="show-details.htm?sch-number">more-(link)</a></div>
-					</div>
-				</div>
-			</div>
-
-
+			
 			<div class="divider-sec"></div>
 			<div class="container-fluid px-3" hidden>
 				<div class="row align-items-strech">
