@@ -75,13 +75,13 @@
 									<div class="row">
 										<div class="col-md-12 col-lg align-self-start">
 											<label for="gpa_id" class="col">Grade Point Average: <br /><span>(GPA 4point scale)</span><br />
-												<input class="col-md" id="gpa_id" name="gpa" type="number" placeholder="3.5" min="3" step="0.01" max="4" />
+												<input class="col-md" id="gpa_id" name="gpa" type="number" placeholder="3.5" min="3" step="0.01" max="4"/>
 											</label>
 										</div>
 										<div class="col-12 col-md-6 col-lg align-self-start">
 											<label for="subj_id" class="col">Major: <br/>
 												<select class="col-auto" name="major" size="8" multiple="" id="subj_id">
-                                                    <option value="ALLM">All Majors</option>
+                                                    <option value="ALLM" default>All Majors</option>
                                                     <option value="ACAD">Academic Development</option>
 													<option value="ACTG">Accounting</option>
 													<option value="ABF">Acct,Business Law and Finance</option>
@@ -176,14 +176,13 @@
 										<div class="col-12 col-md-6 col-lg align-self-start">
 											<label for="hmyears_id" class="col ">Year in school: <br/>
 												<select class="col" id="hmyears_id" name="hmyears" size="8" multiple="" >
-													<option value="u1">1st undergrad</option>
-													<option value="u2">2nd undergrad</option>
-													<option value="u3">3rd undergrad</option>
-													<option value="u4">4th undergrad</option>
-													<option value="g1">1st grad</option>
-													<option value="g2">2nd grad</option>
-													<option value="g3">3rd grad</option>
-													<option value="g4">4th grad</option>
+													<option value="na" default>Any</option>
+													<option value="u1">freshman</option>
+													<option value="u2">sophmore</option>
+													<option value="u3">junior</option>
+													<option value="u4">senior</option>
+													<option value="g1">Graduate Student (Ms)</option>
+													<option value="g2">Graduate Student (PhD)</option>
 												</select>
 											</label>
 										</div>
@@ -191,7 +190,7 @@
 											<label class="">Gender:</label>
 											<div class="col-12"><input class="" name="gender" type="radio" value="m" id="gender_m_id" /> <label for="gender_m_id">Male</label></div>
 											<div class="col-12"><input class="" name="gender" type="radio" value="f" id="gender_f_id" /> <label for="gender_f_id">Female</label></div>
-											<div class="col-12"><input class="" name="gender" type="radio" value="o" id="gender_o_id" /> <label for="gender_o_id">Other</label></div>
+											<div class="col-12"><input class="" name="gender" type="radio" value="o" id="gender_o_id" default/> <label for="gender_o_id">I prefer not say</label></div>
 										</div>
 										<div class="col-12 col-md-6 col-lg align-self-start">
 											<label class="">Ethnicity: </label>
