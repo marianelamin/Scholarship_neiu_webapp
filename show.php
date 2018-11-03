@@ -1,4 +1,5 @@
 <?php
+include("server.php");
 echo "these are all the inputs coming in: " . file_get_contents("php://input");
 /*
 names of the variables passed in the form are:
@@ -188,13 +189,13 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                     <div class="container-fluid">
                         <div class="row">
                             <h1 class="col-12">Scholarships - NEIU El Centro</h1>
-    
+
                         </div>
                     </div>
                     <div class="divider-sec" id="index"></div>
-    
-                    
-    
+
+
+
                     <div class="container-fluid px-3" hidden="">
                         <div class="row">
                             <div class="col content-justified">
@@ -202,9 +203,9 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="divider-sec" id="second" hidden=""></div>
-    
+
                     <div class="container-fluid px-3 sch-form">
                         <div class="row">
                             <div class="col-12">
@@ -228,7 +229,7 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                                             </div>
                                             <div class="col-12 col-md-6 col-lg align-self-start">
                                                 <label for="subj_id" class="col">Major: <br>
-                                                    <span> 
+                                                    <span>
                                                         <?php
                                                           echo $major;
                                                         ?>
@@ -239,7 +240,7 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                                                 <label for="hmyears_id" class="col ">Year in school: <br>
                                                 <?php
                                                           echo $studentype;
-                                                        ?>    
+                                                        ?>
                                                 <span>year in school selected from POST</span>
                                                 </label>
                                             </div>
@@ -247,9 +248,9 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                                                 <label class="">Gender:</label>
                                                 <?php
                                                           echo $gender;
-                                                        ?>                                                
+                                                        ?>
                                                 <span>female selected from the POST</span>
-                                                
+
                                             </div>
                                             <div class="col-12 col-md-6 col-lg align-self-start">
                                                 <label class="">Ethnicity: </label>
@@ -257,81 +258,104 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                                                           echo $ethnic;
                                                         ?>
                                                 <span>Ethnicity selected from the POST </span>
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
+
+
+
+
+
+
                                             </div>
-    
-    
+
+
                                         </div>
                                         <div class="row">
                                             <div class="col-12 text-center">
-                                                <a href="search.htm" target="_blank"><button class="col-5 search-bttn">NEW SEARCH</button></a>	
-    
+                                                <a href="search.htm" target="_blank"><button class="col-5 search-bttn">NEW SEARCH</button></a>
+
                                                         <!-- MAKE SURE I DO VALIDATION -->
-    
+
                                             </div>
-    
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
+
                 <div class="divider-sec"></div>
                 <div class="container-fluid" id="results">
                     <div class="row justify-content-around">
                         <h2 class="col-12 text-center pb-3">Results</h2>
+                        <?php
+                            $query = "SELECT schol_name, schol_from, schol_deadline, schol_howto, schol_amt, schol_active FROM scholarship";
+                            //mysqli_query($db, $query);
+
+                            $result = mysqli_query($db, $query);
+                            if (mysqli_num_rows($result) > 0) {
+                                // output data of each row
+                                //echo mysqli_num_rows($result);
+                                while($row = mysqli_fetch_assoc($result)) {
+                                   //echo "<br>school name: " . $row["schol_name"]. " - School from: " . $row["schol_from"]. "<br>";
+                                   echo '<div class="col-6 sch-object" title="Click for more information">
+                                           <div class="col-auto">'.$row[schol_name].'</div>
+                                           <div class="col-auto">'.$row[schol_from].'</div>
+                                           <div class="col-auto">'.$row[schol_deadline].'</div>
+                                           <div class="col-auto">'.$row[schol_howto].'</div>
+                                           <div class="col-auto">$'.$row[schol_amt].'</div>                                    
+                                           <div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
+                                        </div>';
+                                }
+                           } else {
+                               echo '<div class="col-6 sch-object" title="Click for more information">0 results</div>';
+                           }
+                        ?>
                         <div class="col-6 sch-object" title="Click for more information">
-                            <div class="col-auto">New York Senate Graduate Fellowships</div>
-                            <div class="col-auto">April 29, 2019</div>
-                            <div class="col-auto">$33,000</div>
-                            <div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
-                        </div>
-    
+                                <div class="col-auto">New York Senate Graduate Fellowships</div>
+                                <div class="col-auto">April 29, 2019</div>
+                                <div class="col-auto">$33,000</div>
+                                <div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
+                             </div>
+
                         <div class=" col-6 sch-object">
                             <div class="col-auto">Name-(text)</div>
                             <div class="col">DueDate-(date)</div>
                             <div class="col">Amount-(finance number)</div>
                             <div class="col"><a href="show-details.htm?sch-number">more-(link)</a></div>
                         </div>
-    
+                        <!--
                         <div class=" col-6 sch-object">
                             <div class="col-auto">Name-(text)</div>
                             <div class="col">DueDate-(date)</div>
                             <div class="col">Amount-(finance number)</div>
                             <div class="col"><a href="show-details.htm?sch-number">more-(link)</a></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-    
-    
+
+
                 <div class="divider-sec"></div>
                 <div class="container-fluid px-3" hidden="">
                     <div class="row align-items-strech">
                         <div class="col content-center">
-    
+
                             <h2>General Information</h2>
-    
-                            <p>One paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. 
+
+                            <p>One paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
                             </p>
-    
-                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. 
+
+                            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa.
                             </p>
-    
+
                             <p>If you have questions, please contact <a href="mailto:   xx@neiu.edu">xxxxxxx@neiu.edu</a>.</p>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="divider-sec"></div>
-    
-    
-    
+
+
+
             </main>
 
 		<footer class="p-4">
@@ -369,4 +393,3 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	</body>
 	</html>
-

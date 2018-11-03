@@ -1,3 +1,6 @@
+<?php
+    require("server.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,14 +20,14 @@
 				<h1 class="col-sm-9 main-title h3">Scholarships - NEIU El Centro</h1>
 			</div>
 		</div>
-		<div class="container-fluid ">
-			<div class="row align-items-center nsf-bg"><span class="col-6 col-sm img-banner"><img alt="STEM_2 students" class="img-fluid" src="images/STEM_2.jpg"></span> <span class="col-6 col-sm img-banner"> <img alt="STEM_3 students" class="img-fluid" src="images/STEM_3.jpg"></span> <span class="col-6 col-sm img-banner"> <img alt="STEM_5 students" class="img-fluid" src="images/STEM_5.jpg"></span> <!-- <span class="col-6 col-sm img-banner"> <img class="img-fluid" src="images/STEM_4.jpg" alt="STEM_4 students"/></span> --> <span class="col-6 offset-sm-0 col-sm-2 img-banner"> <img alt="NSF Logo" class="img-fluid offset-2 col-8 offset-sm-0 col-sm-12" src="images/nsf-logo.png"></span>
+		<!-- <div class="container-fluid ">
+			<div class="row align-items-center nsf-bg"><span class="col-6 col-sm img-banner"><img alt="STEM_2 students" class="img-fluid" src="images/STEM_2.jpg"></span> <span class="col-6 col-sm img-banner"> <img alt="STEM_3 students" class="img-fluid" src="images/STEM_3.jpg"></span> <span class="col-6 col-sm img-banner"> <img alt="STEM_5 students" class="img-fluid" src="images/STEM_5.jpg"></span> <!-- <span class="col-6 col-sm img-banner"> <img class="img-fluid" src="images/STEM_4.jpg" alt="STEM_4 students"/></span><span class="col-6 offset-sm-0 col-sm-2 img-banner"> <img alt="NSF Logo" class="img-fluid offset-2 col-8 offset-sm-0 col-sm-12" src="images/nsf-logo.png"></span>
 
 				<div class="small text-center pb-2">
 					<span class="col-6 offset-sm-0 col-sm-2 img-banner">texto peque;o</span></div>
 				</div>
 			</div>
-		</header>
+		</header> -->
 
 		<!-- NAVEGATION BAR -->
 
@@ -79,47 +82,39 @@
     <th>Amount</th>
     <th>How to apply</th>
 </tr>
-                
-<tr>
-                    <td><span id="taskNo_span">1.</span></td>
-                    <td><span id="taskName_span">First Scholarship</span></td>
-                    <td><span class="badge bg-red" id="progess_span">Nov 31, 2019</span></td>
-                    <td><span id="taskNo_span">3.0</span></td>
-<td><span class="badge bg-red" id="">Computer Science</span></td>
-    
-    <td>
-                        <div class="progress progress-xs">
-                            <div id="progess_div" class="progress-bar progress-bar-danger" style="width: 15%"></div>
-                        </div>
-                    </td>                    
-<td><span class="badge bg-red"><a href="">more</a></span></td>
-</tr>
-<tr>
-                    <td><span id="taskNo_span">1.</span></td>
-                    <td><span id="taskName_span">Update software</span></td>
-                    <td>
-                        <div class="progress progress-xs">
-                            <div id="progess_div" class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-red" id="progess_span">55%</span></td>
-                    <td><span id="taskNo_span">what text?</span> <br>
-<a href="">more info</a></td>
-</tr><tr>
-                    <td><span id="taskNo_span">1.</span></td>
-                    <td><span id="taskName_span">Update software</span></td>
-                    <td>
-                        <div class="progress progress-xs">
-                            <div id="progess_div" class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-red" id="progess_span">55%</span></td>
-                    <td><span id="taskNo_span">what text?</span> <br>
-<a href="">more info</a></td>
-</tr>
-                
-                
-                
+<?php
+    $query = "SELECT schol_name, schol_from, schol_deadline, schol_howto, schol_amt, schol_active, schol_id FROM scholarship";
+    //mysqli_query($db, $query);
+
+    $result = mysqli_query($db, $query);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        //echo mysqli_num_rows($result);
+        while($row = mysqli_fetch_assoc($result)) {
+           echo '
+           <tr>
+               <td><span id="taskNo_span">'.$row[schol_id].'</span></td>
+               <td><span id="taskName_span">'.$row[schol_name].'</span></td>
+               <td><span class="badge bg-red" id="progess_span">'.$row[schol_deadline].'</span></td>
+               <td><span id="taskNo_span">3.0</span></td>
+               <td><span class="badge bg-red" id="">Computer Science</span></td>
+               <td><span class="badge bg-red" id="">'.$row[schol_amt].'</span></td>
+               <td><span class="badge bg-red"><a href="">'.$row[schol_howto].'</a></span></td>
+           </tr>
+           ';
+           // echo '<div class="col-6 sch-object" title="Click for more information">
+           //         <div class="col-auto">'.$row[schol_name].'</div>
+           //         <div class="col-auto">'.$row[schol_from].'</div>
+           //         <div class="col-auto">'.$row[schol_deadline].'</div>
+           //         <div class="col-auto">'.$row[schol_howto].'</div>
+           //         <div class="col-auto">$'.$row[schol_amt].'</div>
+           //         <div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
+           //      </div>';
+        }
+   } else {
+       echo '<div class="col-6 sch-object" title="Click for more information">0 results</div>';
+   }
+?>
             </tbody>
         </table>
     </div>
@@ -195,10 +190,10 @@ taskName" class="col-sm-2 control-label">TaskName</label>
     </div>
     <!-- /.modal -->
 </div>
-    
-    
-    
-    
+
+
+
+
 </main>
 		<footer class="p-4">
 			<div class="container-fluid">
@@ -234,6 +229,5 @@ taskName" class="col-sm-2 control-label">TaskName</label>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="js/funct.js"> </script>
-        <script src="js/script.js"></script>
-	
+
 </body></html>
