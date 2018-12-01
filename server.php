@@ -1,2 +1,2 @@
 <?php
-    header("Location: server1.php");
+    require_once("server1.php");

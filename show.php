@@ -1,6 +1,6 @@
 <?php
 include("server.php");
-echo "these are all the inputs coming in: " . file_get_contents("php://input");
+//echo "these are all the inputs coming in: " . file_get_contents("php://input");
 /*
 names of the variables passed in the form are:
 1.  GPA:
@@ -126,7 +126,7 @@ names of the variables passed in the form are:
 */
 
 // make sure this thing works if the form is left blank.
-$gpa = (isset($_POST['gpa'])) ? htmlentities($_POST['gpa']) : 0;
+$gpa = (isset($_POST['gpa'])) ? intval($_POST['gpa']) : 0;
 $major = (isset($_POST['major'])) ? htmlentities($_POST['major']) : 0;
 $studentype = (isset($_POST['hmyears'])) ? htmlentities($_POST['hmyears']) : 0;
 $gender = (isset($_POST['gender'])) ? htmlentities($_POST['gender']) : 0;
@@ -210,54 +210,36 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                         <div class="row">
                             <div class="col-12">
                                 <h2 class="text-center pb-3">Search Title</h2>
-                                    <pre>
-                                        <?php
-                                        echo "This is the post content:\n";
-                                        var_dump($_POST);
-                                        ?>
-                                    </pre>
                                 <div class="container-fluid">
                                     <div>
                                         <div class="row">
                                             <div class="col-md-12 col-lg align-self-start">
                                                 <label for="gpa_id" class="col">Grade Point Average: <br><span>(GPA 4point scale)</span><br>
-                                                <?php
-                                                    echo $gpa;
-                                                ?>
-                                                <span>valuefrom post = 3.5</span>
+                                        <span style="color:purple;"> <?= $gpa ?></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-6 col-lg align-self-start">
                                                 <label for="subj_id" class="col">Major: <br>
-                                                    <span>
-                                                        <?php
-                                                          echo $major;
-                                                        ?>
-                                                        major selected for search</span>
+                                                    <span style="color:purple;">
+                                                        <?= $major ?></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-6 col-lg align-self-start">
                                                 <label for="hmyears_id" class="col ">Year in school: <br>
-                                                <?php
-                                                          echo $studentype;
-                                                        ?>
-                                                <span>year in school selected from POST</span>
+                                                
+                                                <span style="color:purple;"> <?= $studentype ?></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-6 col-lg align-self-start">
                                                 <label class="">Gender:</label>
-                                                <?php
-                                                          echo $gender;
-                                                        ?>
-                                                <span>female selected from the POST</span>
+                                                
+                                                <span style="color:purple;"> <?=$gender ?></span>
 
                                             </div>
                                             <div class="col-12 col-md-6 col-lg align-self-start">
                                                 <label class="">Ethnicity: </label>
-                                                <?php
-                                                          echo $ethnic;
-                                                        ?>
-                                                <span>Ethnicity selected from the POST </span>
+                                                
+                                                <span style="color:purple;"><?= $ethnic ?> </span>
 
 
 
@@ -289,35 +271,41 @@ $ethnic = (isset($_POST['ethnic'])) ? htmlentities($_POST['ethnic']) : 0;
                         <h2 class="col-12 text-center pb-3">Results</h2>
                         <?php
                             $query = "SELECT schol_name, schol_from, schol_deadline, schol_howto, schol_amt, schol_active FROM scholarship";
-                            //mysqli_query($db, $query);
+                           
 
                             $result = mysqli_query($db, $query);
                             if (mysqli_num_rows($result) > 0) {
-                                // output data of each row
-                                //echo mysqli_num_rows($result);
+                                
                                 while($row = mysqli_fetch_assoc($result)) {
-                                   //echo "<br>school name: " . $row["schol_name"]. " - School from: " . $row["schol_from"]. "<br>";
-                                   echo '<div class="col-6 sch-object" title="Click for more information">
-                                           <div class="col-auto">'.$row[schol_name].'</div>
-                                           <div class="col-auto">'.$row[schol_from].'</div>
-                                           <div class="col-auto">'.$row[schol_deadline].'</div>
-                                           <div class="col-auto">'.$row[schol_howto].'</div>
-                                           <div class="col-auto">$'.$row[schol_amt].'</div>                                    
-                                           <div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
-                                        </div>';
+
+                                   echo '<div class="container">
+                                           <div class="row sch-object" title="RESULTS">
+                                             <div class="col-8">
+                                               <div class="sch-object-title">'.$row['schol_name'].'</div>  
+                                               <div>'.$row['schol_from'].'</div>
+                                             </div>
+                                             <div class="col-3">
+                                               <div class="sch-object-due">'.$row['schol_deadline'].'</div>  
+                                               <div class="sch-object-amt">$'.$row['schol_amt'].'</div>
+                                             </div>
+                                             <div class="col-12 sch-object-more">'.$row['schol_howto'].'</div>
+                                          </div>
+                                        </div>
+                                        ';
                                 }
                            } else {
-                               echo '<div class="col-6 sch-object" title="Click for more information">0 results</div>';
+                               echo '<div class="container">
+                                           <div class="row sch-object" title="RESULTS">No Results</div></div>';
                            }
                         ?>
-                        <div class="col-6 sch-object" title="Click for more information">
+                        <div class="col-6 sch-object" title="Click for more information" hidden>
                                 <div class="col-auto">New York Senate Graduate Fellowships</div>
                                 <div class="col-auto">April 29, 2019</div>
                                 <div class="col-auto">$33,000</div>
                                 <div class="col-auto"><a href="show-details.htm?sch-number">more</a></div>
                              </div>
 
-                        <div class=" col-6 sch-object">
+                        <div class=" col-6 sch-object" hidden>
                             <div class="col-auto">Name-(text)</div>
                             <div class="col">DueDate-(date)</div>
                             <div class="col">Amount-(finance number)</div>

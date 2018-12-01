@@ -94,37 +94,38 @@ main{
 	margin: 1%;
 	min-height: 10vh;
 	display:block;
-	border: 1px solid gray;
+	border: 1px solid #f5f5f5;
 	border-radius: 5%;
 }
 
-.sch-object>div{
+/*.sch-object>div{
 	display:block;
-}
-.sch-object>div:nth-child(1){
+}*/
+.sch-object-title{
 	/*Title of sholarship*/
 	font-weight: bold;
 	
 }
-.sch-object>div:nth-child(2){
+.sch-object-due{
 	/*due date of application*/
 	font-size: 0.75rem;	
 }
-.sch-object>div:nth-child(3){
+.sch-object-amt{
 	/*amount granted*/
 	
 	font-size: 0.70rem;
 	
 }
-.sch-object>div:nth-child(4){
+.sch-object-more{
 	/*more information, click here*/
-	color: blue;
+	color: #00b7ff;
 	font-size: 0.70rem;
 }
 
 .sch-object:hover{
-	background: gray;
-	color: white;
+	background-color: #fff2d2;
+	border:1px solid orange;
+	
 }
 .search-bttn{
 	line-height: 3rem;
