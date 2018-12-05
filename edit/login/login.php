@@ -6,28 +6,32 @@ if ( isset($_POST['cancel'] ) ) {
     return;
 }
 
-
-
 $failure = false;  // If we have no POST data
 
-// Check to see if we have some POST data, if we do process it
-if ( !isset($_POST['email']) || !isset($_POST['password']) ) {
-    
-    $correo = htmlentities($_POST['email']);
-    $correo = htmlentities($_POST['password']);
+if(isset($_POST['submitt'] )){
 
-    // prepare conection to the db
-    // read the database, check for a user of that correo
-    //bring the row and check the hash against the password
-    //if correct show the edit page (start sesion)
-    //if not correct send back to log in (wipeout and destroy session).
     
-    
-      }
-      else
-      {
-        $failure = "Incorrect email or password";
-      }
+    // Check to see if we have some POST data, if we do process it
+    if ( !isset($_POST['email']) || !isset($_POST['password']) ) {
+    $failure = "Incorrect email or password";
+    }
+    else
+    {
+        
+        $correo = htmlentities($_POST['email']);
+        $contra = htmlentities($_POST['password']);
+        
+        // do some validation
+        // prepare conection to the db
+        // read the database, check for a user of that correo
+        //bring the row and check the hash against the password
+        //if correct show the edit page (start sesion)
+        //if not correct send back to log in (wipeout and destroy session).
+        
+          }
+
+
+}
 
 
 // Fall through into the View
@@ -46,7 +50,7 @@ if ( !isset($_POST['email']) || !isset($_POST['password']) ) {
 <h1>Financial Aid - El Centro</h1>
 <h4>Please Log in</h4>
 
-<img src="../images/logo.png" alt=" logo"><br><br>
+<img class="img-thumbnail" src="../../images/neiu_wordmark_color.png" alt=" logo"><br><br>
 
 
 <?php
