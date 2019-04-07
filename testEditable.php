@@ -1,25 +1,7 @@
-<?php
+<?php  include("includes/header.inc.php"); ?>
 
-
-
-
-
-
-?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
-    <!-- <script src="main.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
+<!-- ############################  START OF THE BODY CONTENT ############################ -->
+<main>
 <?php
 for ($i = 0; $i < 10 ; $i++) {
     echo '<p>
@@ -92,5 +74,6 @@ $('[data-onclick]').each(function(){
 
 
 </script>
-</body>
-</html>
+</main>
+<!-- ############################  END OF THE BODY CONTENT ############################ -->
+<?php include("includes/footer.inc.php"); ?>
