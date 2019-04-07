@@ -1,3 +1,4 @@
 # ignore file containing sensitive data
 server1.php
 server.php
+node_modules
