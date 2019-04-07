@@ -1,3 +1,0 @@
-[07-Nov-2018 14:02:44 America/Chicago] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home1/pererag/public_html/scholarships/PHPMailer/PHPMailer.php on line 1368
-[07-Nov-2018 14:05:31 America/Chicago] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home1/pererag/public_html/scholarships/PHPMailer/PHPMailer.php on line 1368
-[07-Nov-2018 14:05:41 America/Chicago] PHP Fatal error:  Class 'PHPMailer\PHPMailer\Exception' not found in /home1/pererag/public_html/scholarships/PHPMailer/PHPMailer.php on line 1368
