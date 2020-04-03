@@ -1,0 +1,30 @@
+{
+  "name": "scholarship-neiu-webapp",
+  "version": "1.0.0",
+  "description": "this will be a portal used to provide students with scholarships",
+  "main": "index.htm",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianelamin/Scholarship_neiu_webapp.git"
+  },
+  "keywords": [
+    "php",
+    "scholarship",
+    "students",
+    "neiu"
+  ],
+  "author": "Marianela Crissman, John Crissman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marianelamin/Scholarship_neiu_webapp/issues"
+  },
+  "homepage": "https://github.com/marianelamin/Scholarship_neiu_webapp#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
+}
